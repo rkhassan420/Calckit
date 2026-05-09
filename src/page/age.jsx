@@ -226,6 +226,8 @@ const Age = () => {
       setError("");
     } catch (err) {
       setAge(null);
+        console.log(err.response);
+  console.log(err.message);
       setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0 });
       setError("Invalid date or future date not allowed.");
     } finally {
