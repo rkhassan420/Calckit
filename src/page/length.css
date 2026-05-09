@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+/* ── Page wrapper ─────────────────────────────────────────── */
+.length-wrapper {
+  min-height: 100vh;
+  background: var(--background);
+  font-family: 'Sora', sans-serif;
+}
+
+/* ── Centered content column ──────────────────────────────── */
+.length-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 28px 16px 56px;
+  animation: cardIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0);    }
+}
+
+/* ── Page header ──────────────────────────────────────────── */
+.length-header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.length-icon {
+  display: block;
+  font-size: 42px;
+  line-height: 1;
+  margin-bottom: 10px;
+  animation: iconBounce 2.4s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+  0%, 100% { transform: translateY(0);   }
+  50%      { transform: translateY(-6px); }
+}
+
+.length-title {
+  margin: 0 0 4px;
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: var(--input-color);
+}
+
+.length-subtitle {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--input-color);
+  opacity: 0.45;
+}
+
+/* ── Main converter card ──────────────────────────────────── */
+.length-card {
+  background: var(--num-bg-color);
+  border: var(--btns-border);
+  border-radius: 22px;
+  padding: 28px 24px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.10);
+  margin-bottom: 28px;
+}
+
+/* ── From / To rows ───────────────────────────────────────── */
+.conv-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.conv-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--input-color);
+  opacity: 0.42;
+}
+
+.conv-body {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+}
+
+/* number input */
+.conv-input {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--input-color);
+  background: var(--sign-bg-color);
+  border: var(--btns-border);
+  border-radius: 13px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  -moz-appearance: textfield;
+}
+
+.conv-input::-webkit-outer-spin-button,
+.conv-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.conv-input::placeholder {
+  color: var(--input-color);
+  opacity: 0.25;
+}
+
+.conv-input:focus {
+  border-color: rgba(255, 140, 0, 0.65);
+  box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.12);
+  background: var(--white-bg-color);
+}
+
+/* result display */
+.conv-output {
+  flex: 1;
+  min-width: 0;
+  padding: 13px 14px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ff8c00;
+  background: var(--sign-bg-color);
+  border: var(--btns-border);
+  border-left: 3px solid #ff8c00;
+  border-radius: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.conv-placeholder {
+  opacity: 0.25;
+  color: var(--input-color);
+}
+
+/* unit selector */
+.conv-select {
+  flex-shrink: 0;
+  width: 148px;
+  padding: 10px 10px;
+  font-family: 'Sora', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--input-color);
+  background: var(--sign-bg-color);
+  border: var(--btns-border);
+  border-radius: 13px;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.conv-select:focus {
+  border-color: rgba(255, 140, 0, 0.65);
+  box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.12);
+  background: var(--white-bg-color);
+}
+
+.conv-select option {
+  background: var(--sign-bg-color);
+  color: var(--input-color);
+}
+
+/* ── Swap row ─────────────────────────────────────────────── */
+.swap-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.swap-line {
+  flex: 1;
+  height: 1px;
+  background: var(--btns-border-color, rgba(0,0,0,0.10));
+  border: none;
+  opacity: 0.5;
+}
+
+.swap-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: var(--btns-border);
+  background: var(--sign-bg-color);
+  color: #ff8c00;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+  flex-shrink: 0;
+}
+
+.swap-btn:hover {
+  background: rgba(255, 140, 0, 0.12);
+  box-shadow: 0 4px 16px rgba(255, 140, 0, 0.18);
+  transform: rotate(180deg);
+}
+
+.swap-btn:active {
+  transform: rotate(180deg) scale(0.92);
+}
+
+/* ── Quick reference ──────────────────────────────────────── */
+.ref-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--input-color);
+  opacity: 0.42;
+  margin-bottom: 10px;
+  padding: 0 2px;
+}
+
+.ref-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 9px;
+}
+
+.ref-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 12px 14px;
+  background: var(--num-bg-color);
+  border: var(--btns-border);
+  border-radius: 13px;
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+
+.ref-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.09);
+}
+
+.ref-from {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--input-color);
+  white-space: nowrap;
+}
+
+.ref-arrow {
+  font-size: 13px;
+  color: #ff8c00;
+  opacity: 0.7;
+  flex-shrink: 0;
+}
+
+.ref-to {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: #ff8c00;
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .length-container {
+    padding: 20px 12px 48px;
+  }
+
+  .length-card {
+    padding: 22px 16px;
+    border-radius: 18px;
+  }
+
+  .conv-input,
+  .conv-output {
+    font-size: 17px;
+    padding: 11px 12px;
+  }
+
+  .conv-select {
+    width: 120px;
+    font-size: 12px;
+    padding: 9px 8px;
+  }
+
+  .ref-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ref-from,
+  .ref-to {
+    font-size: 12px;
+  }
+}

@@ -13,85 +13,60 @@ const Setting = () => {
 
     const { theme, handleDarkTheme, handleLightTheme } = useContext(ThemeContext);
 
-    return(
-        <div>
-            <Header/>
-            
-            <div>
+    return (
+        <div className="setting-wrapper">
+            <Header />
+
+            <div className="little-container" >
+                {/* ── Appearance section ── */}
                 <div className="theme-toper" >
                     <p>Appearance</p>
                 </div>
 
-                <div  className="theme-container" style={{border: theme === "dark-theme" ? "none" : "1px solid #ccc"
-                            }}>
-
+                <div className="theme-container">
                     <div>
-                        <img src={theme === 'dark-theme' ? theme_dark: theme_icon } alt="" style={{backgroundColor: theme === "dark-theme" ? "#222222" : ""
-                            }}  />
+                        <img
+                            src={theme === 'dark-theme' ? theme_dark : theme_icon}
+                            alt="theme icon"
+                        />
                     </div>
-
-                    <div>
-                        <h4 style={{backgroundColor: theme === "dark-theme" ? "#222222" : ""
-                            }}   >App Theme</h4>
-                        <p style={{backgroundColor: theme === "dark-theme" ? "#222222" : ""
-                            }}   className="theme-title">Select which app theme to display</p>
-                    </div>                    
-
+                    <div   >
+                        <h4>App Theme</h4>
+                        <p className="theme-title">Select which app theme to display</p>
+                    </div>
                 </div>
-                
 
-                <div className="theme-btn" style={{border: theme === "dark-theme" ? "none" : "1px solid #ccc"
-                            }} >
-                    <ul style={{ listStyle:'none' , backgroundColor: theme === "dark-theme" ? "#222222" : ""
-                            }} >
-
-                        <li style={{backgroundColor: theme === "dark-theme" ? "#222222" : ""
-                            }}    onClick={handleLightTheme}>
-                            <  img src={theme === "light-theme" ? tick : no_tick } style={{backgroundColor: theme === "dark-theme" ? "#222222" : ""
-                            }}   />
-                            <p style={{backgroundColor: theme === "dark-theme" ? "#222222" : ""
-                            }}  >Light</p>
+                <div className="theme-btn">
+                    <ul>
+                        <li onClick={handleLightTheme}>
+                            <img src={theme === "light-theme" ? tick : no_tick} alt="light" />
+                            <p>Light</p>
                         </li>
-
-                        <li style={{backgroundColor: theme === "dark-theme" ? "#222222" : ""
-                            }}    onClick={handleDarkTheme} >
-                            <img src={theme === "dark-theme" ? tick : no_tick} style={{backgroundColor: theme === "dark-theme" ? "#222222" : ""
-                            }}    />
-                            <p style={{backgroundColor: theme === "dark-theme" ? "#222222" : ""
-                            }}  >Dark</p>
+                        <li onClick={handleDarkTheme}>
+                            <img src={theme === "dark-theme" ? tick : no_tick} alt="dark" />
+                            <p>Dark</p>
                         </li>
-                        <li style={{backgroundColor: theme === "dark-theme" ? "#222222" : ""
-                            }}  >
-                            < img src={no_tick} alt="default" style={{backgroundColor: theme === "dark-theme" ? "#222222" : ""
-                            }}   />
-                            <p style={{backgroundColor: theme === "dark-theme" ? "#222222" : ""
-                            }}  >Use System Setting</p>
-                        </li>
+                       
                     </ul>
                 </div>
 
+                {/* ── About section ── */}
                 <div className="theme-about-title">
                     <p>About</p>
                 </div>
 
-                <div className="theme-about" style={{border: theme === "dark-theme" ? "none" : "1px solid #ccc"
-                            }}  >             
-                        
-                        <div style={{backgroundColor: theme === "dark-theme" ? "#222222" : ""
-                            }}  >
-                            <img src={icon} alt=""  style={{backgroundColor: theme === "dark-theme" ? "#222222" : ""
-                            }}  />
-                        </div>
-
-                        <div>
-                            <h4 style={{backgroundColor: theme === "dark-theme" ? "#222222" : ""
-                            }}  >Calculator`s</h4>
-                            <p style={{backgroundColor: theme === "dark-theme" ? "#222222" : ""
-                            }}   className="theme-rights">&copy; 2025 Ali Hassan. All rights reserved.</p>
-                        </div>                       
-                    
+                <div className="theme-about">
+                    <div>
+                        <img src={icon} alt="app icon" />
+                    </div>
+                    <div>
+                        <h4>Calculator&apos;s</h4>
+                        <p className="theme-rights">&copy; 2025 Ali Hassan. All rights reserved.</p>
+                    </div>
                 </div>
             </div>
         </div>
-    )
-}; export default Setting
+    );
+};
+
+export default Setting;

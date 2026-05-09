@@ -1,0 +1,453 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+.age-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  position: relative;
+  overflow: hidden;
+  background: var(--background);
+  font-family: 'Sora', sans-serif;
+}
+
+.age-container {
+  width: 100%;
+  max-width: 460px;
+  /* background: var(--num-bg-color); */
+  border: var(--btns-border);
+  border-radius: 24px;
+  padding: 40px 36px;
+  box-shadow: 0 32px 64px rgba(0,0,0,0.12), 0 0 80px rgba(255,140,0,0.05);
+  animation: cardIn 0.6s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.age-header {
+  text-align: center;
+  margin-bottom: 32px;
+  background: transparent;
+}
+
+.age-icon {
+  font-size: 44px;
+  line-height: 1;
+  margin-bottom: 12px;
+  display: block;
+  animation: iconBounce 2s ease-in-out infinite;
+  background: transparent;
+}
+
+@keyframes iconBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.age-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--input-color);
+  letter-spacing: -0.5px;
+  margin: 0 0 6px;
+  background: transparent;
+}
+
+.age-subtitle {
+  font-size: 13px;
+  color: var(--input-color);
+  opacity: 0.45;
+  font-weight: 300;
+  margin: 0;
+  background: transparent;
+}
+
+.age-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: transparent;
+}
+
+.form-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--input-color);
+  opacity: 0.45;
+  margin: 0;
+  background: transparent;
+}
+
+.dropdowns {
+  display: flex;
+  gap: 10px;
+  background: transparent;
+}
+
+.select-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: transparent;
+}
+
+.select-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--input-color);
+  opacity: 0.4;
+  background: transparent;
+}
+
+.select-wrapper select {
+  width: 100%;
+  padding: 11px 10px;
+  font-size: 14px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 500;
+  color: var(--input-color);
+  background: var(--sign-bg-color);
+  border: var(--btns-border);
+  border-radius: 12px;
+  appearance: none;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s, box-shadow 0.2s;
+  text-align: center;
+  outline: none;
+}
+
+.select-wrapper select.filled {
+  color: var(--input-color);
+  background: var(--white-bg-color);
+  border-color: rgba(255,140,0,0.5);
+}
+
+.select-wrapper select:focus {
+  border-color: rgba(255,140,0,0.7);
+  background: var(--white-bg-color);
+  box-shadow: 0 0 0 3px rgba(255,140,0,0.12);
+  color: var(--input-color);
+}
+
+.select-wrapper select option {
+  background: var(--sign-bg-color);
+  color: var(--input-color);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  font-family: 'Sora', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--equal-color);
+  background: var(--equal-bg-color);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: transform 0.15s, box-shadow 0.15s, opacity 0.2s, filter 0.2s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.1);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+}
+
+.submit-btn:hover:not(:disabled)::after {
+  opacity: 1;
+}
+
+.submit-btn:active:not(:disabled) {
+  transform: translateY(0);
+  filter: brightness(0.95);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(0,0,0,0.15);
+  border-top-color: var(--equal-color);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.age-error {
+  margin-top: 16px;
+  padding: 12px 16px;
+  background: rgba(255,80,80,0.08);
+  border: 1px solid rgba(255,80,80,0.25);
+  border-radius: 10px;
+  color: #e05555;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.error-icon {
+  font-size: 15px;
+}
+
+.age-result {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  animation: resultIn 0.5s cubic-bezier(0.22,1,0.36,1) both;
+  background: transparent;
+}
+
+@keyframes resultIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 10px;
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 18px 10px;
+  background: var(--sign-bg-color);
+  border: var(--btns-border);
+  border-radius: 14px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.stat-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 30px;
+  font-weight: 600;
+  color: #ff8c00;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--input-color);
+  opacity: 0.4;
+}
+
+.next-birthday {
+  padding: 14px 18px;
+  background: var(--sign-bg-color);
+  border: var(--btns-border);
+  border-left: 3px solid #ff8c00;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.next-birthday-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ff8c00;
+  margin: 0 0 4px;
+  background: transparent;
+}
+
+.next-birthday-in {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--input-color);
+  margin: 0;
+  background: transparent;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 8px;
+}
+
+.countdown-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 14px 6px;
+  background: var(--sign-bg-color);
+  border: var(--btns-border);
+  border-top: 2px solid var(--equal-bg-color);
+  border-radius: 12px;
+}
+
+.countdown-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--equal-bg-color);
+  line-height: 1;
+}
+
+.countdown-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--input-color);
+  opacity: 0.45;
+}
+
+.birthday-banner {
+  padding: 16px;
+  background: var(--sign-bg-color);
+  border: var(--btns-border);
+  border-radius: 12px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  color: #e09500;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(255,200,0,0);
+  }
+
+  50% {
+    box-shadow: 0 0 16px 4px rgba(255,200,0,0.12);
+  }
+}
+
+.age-divider {
+  border: none;
+  border-top: var(--btns-border);
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .age-wrapper {
+    padding: 0;
+    align-items: flex-start;
+    min-height: 100dvh;
+  }
+
+  .age-container {
+    max-width: 100%;
+    width: 100%;
+    min-height: 100dvh;
+    border-radius: 0;
+    border: none;
+    padding: 32px 20px 40px;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .age-title {
+    font-size: 22px;
+  }
+
+  .stat-value {
+    font-size: 24px;
+  }
+
+  .countdown-value {
+    font-size: 18px;
+  }
+
+  .dropdowns {
+    gap: 7px;
+  }
+
+  .blob {
+    display: none;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .age-wrapper {
+    padding: 30px 16px;
+  }
+
+  .age-container {
+    max-width: 86%;
+  }
+}
+
+@media (min-width: 901px) {
+  .age-container {
+    max-width: 460px;
+  }
+}

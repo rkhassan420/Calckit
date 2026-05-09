@@ -1,95 +1,211 @@
-.theme-toper{
-    margin: 10px 25px;
-    font-weight: 600;
-    
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+
+/* ── Page wrapper ─────────────────────────────────────────── */
+.setting-wrapper {
+  min-height: 100vh;
+  background: var(--background);
+  font-family: 'Sora', sans-serif;
+  padding: 24px 16px 48px;
 }
 
-.theme-container{
-    
-    border-radius: 3px;
-    margin: 0px 25px;    
-    background-color: var(--white-bg-color);
-    padding: 25px;
-    line-height: 25px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-    border-bottom: none;
-    
+/* ── Section labels  (Appearance / About) ─────────────────── */
+.theme-toper,
+.theme-about-title {
+  margin: 28px 0 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--input-color);
+  opacity: 0.45;
+  padding: 0 4px;
 }
 
-.theme-container img{
-    width: auto;
-    height: 20px;
-    float: left;
-    
+.theme-toper p {
+  background: transparent;
 }
 
-.theme-title{
-    font-size: 13px;
-    color: gray;
+ .theme-about-title p{
+  background: transparent;
+ }
+
+.theme-about-title {
+  margin-top: 36px;
 }
 
-.theme-btn{
-    margin: 0px 25px;
-    padding: 15px;
-    
-    background-color: var(--white-bg-color);
+/* ── Shared card shell ────────────────────────────────────── */
+.theme-container,
+.theme-btn,
+.theme-about {
+  background: var(--num-bg-color);
+  border: var(--btns-border);
+  border-radius: 20px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  animation: cardIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
-.theme-btn li{
-    
-    display: flex;    
-    align-items: center;
-    margin-bottom: 5px;
-    gap: 10px;
-    font-size: 16px;
-    font-weight: 400;
-    cursor: pointer;
+@keyframes cardIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0);    }
 }
 
-.theme-btn li img{
-    width: auto;
-    height: 25px;
-       
+/* ── Theme header card ────────────────────────────────────── */
+.theme-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 24px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: none;
 }
 
-.theme-btn li img:hover{
-    background-color: gray;
-    border-radius: 50%;
+.theme-container img {
+  width: auto;
+  height: 28px;
+  flex-shrink: 0;
+  background: transparent !important;
 }
 
-.theme-about-title{
-    margin: 10px 25px;
-    margin-top: 30px;
-    font-weight: 600;
+.theme-container h4 {
+  margin: 0 0 2px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--input-color);
+  background: transparent !important;
+  letter-spacing: -0.2px;
 }
 
-.theme-about{
-    
-    border-radius: 3px;
-    margin: 0px 25px;
-    background-color: var(--white-bg-color);
-    padding: 25px;
-    line-height: 25px;
-    flex-direction: row;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    
+.theme-container div{
+    background: transparent;
 }
 
-.theme-about img{
-    width: auto;
-    height: 20px;
-    
+.theme-about div{
+    background: transparent;
 }
 
-.theme-rights{
-    font-size: 13px;
-    color: gray;
-        
+.theme-title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--input-color);
+  opacity: 0.45;
+  background: transparent !important;
 }
 
+/* ── Theme option list card ───────────────────────────────── */
+.theme-btn {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-top: none;
+  padding: 8px 0;
+}
 
+.theme-btn ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: transparent !important;
+}
+
+.theme-btn li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 13px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--input-color);
+  cursor: pointer;
+  transition: background 0.18s ease;
+  background: transparent !important;
+}
+
+.theme-btn li:hover {
+  background: var(--sign-bg-color) !important;
+}
+
+/* thin divider between rows */
+.theme-btn li + li {
+  border-top: var(--btns-border);
+}
+
+.theme-btn li img {
+  width: auto;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  transition: background 0.18s;
+  background: transparent !important;
+}
+
+.theme-btn li:hover img {
+  background: rgba(255, 140, 0, 0.12) !important;
+}
+
+.theme-btn li p {
+  margin: 0;
+  background: transparent !important;
+}
+
+/* ── About card ───────────────────────────────────────────── */
+.theme-about {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  padding: 22px 24px;
+}
+
+.theme-about img {
+  width: auto;
+  height: 28px;
+  flex-shrink: 0;
+  background: transparent !important;
+}
+
+.theme-about h4 {
+  margin: 0 0 2px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--input-color);
+  background: transparent !important;
+  letter-spacing: -0.2px;
+}
+
+.theme-rights {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--input-color);
+  opacity: 0.45;
+  background: transparent !important;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .setting-wrapper {
+    padding: 16px 12px 40px;    
+  
+  } 
+  
+
+  .theme-container,
+  .theme-btn,
+  .theme-about {
+    border-radius: 16px;
+  }
+
+  .theme-container {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .theme-btn {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}

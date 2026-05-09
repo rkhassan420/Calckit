@@ -1,44 +1,66 @@
-import error_icon from "../assets/error.png"
-import { Link, Navigate, useNavigate } from "react-router-dom"
-
+import { Link, useNavigate } from "react-router-dom"
+import "./ErrorPage.css"
 
 const ErrorPage = () => {
+  const navigate = useNavigate()
 
-    const navigate = useNavigate()
-    const handleGoBack = () => {
+  return (
+    <div className="ep-root">
 
-       navigate(-1);
+      {/* Animated grid background */}
+      <div className="ep-grid" aria-hidden="true" />
 
-    };
+      {/* Floating orbs */}
+      <div className="ep-orb ep-orb-1" aria-hidden="true" />
+      <div className="ep-orb ep-orb-2" aria-hidden="true" />
+      <div className="ep-orb ep-orb-3" aria-hidden="true" />
 
+      <div className="ep-content">
 
-    return(
-        <div
-        style={{ height:"100vh", display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column"}}
-        className=" error-container">
-
-        <div>
-        <img src={error_icon} style={{height:"450px"}} alt="" />
+        {/* Glitch 404 */}
+        <div className="ep-code-wrap" aria-hidden="true">
+          <span className="ep-code" data-text="404">404</span>
         </div>
 
-        <div>
-            <h2>The page you were looking for could not be found!</h2>
+        {/* Status badge */}
+        <div className="ep-badge">
+          <span className="ep-badge-dot" />
+          Page Not Found
         </div>
 
-        <div className=" error-btn-container " style={{marginTop:"35px"}} > 
+        {/* Heading */}
+        <h1 className="ep-heading">
+          Oops! You've drifted<br />
+          <span className="ep-heading-accent">off the map</span>
+        </h1>
 
-        <Link to="/" style={{margin: "0px 15px"}} >
-        <button style={{border:"1px solid #ccc",borderRadius:"9999px", padding:"20px 25px",cursor:"pointer"}} >Back To Home
-        </button>
-        </Link> 
+        {/* Subtext */}
+        <p className="ep-sub">
+          The page you're looking for doesn't exist or has been moved.<br />
+          Let's get you back on track.
+        </p>
 
-        <button onClick={handleGoBack} style={{border:"1px solid #ccc",borderRadius:"9999px", padding:"20px 25px",cursor:"pointer"}}  >Go Back Page</button>        
+        {/* Buttons */}
+        <div className="ep-actions">
+          <Link to="/" className="ep-btn ep-btn-primary">
+            <svg style={{background:'transparent'}} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+              <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            Back to Home
+          </Link>
 
-
+          <button onClick={() => navigate(-1)} className="ep-btn ep-btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6"/>
+            </svg>
+            Go Back
+          </button>
         </div>
 
-        
-            
-        </div>
-    )
-}; export default ErrorPage
+      </div>
+    </div>
+  )
+}
+
+export default ErrorPage

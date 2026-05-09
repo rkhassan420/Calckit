@@ -1,86 +1,97 @@
-import { useState, useEffect,useRef } from "react";
+import { useState, useEffect, useContext } from "react";
+import { evaluate } from "mathjs";
 import Header from "../components/header";
-import './standard.css'
+import './standard.css';
+import { ThemeContext } from "../theme/ThemeContext";
 
 const Standard = () => {
-
     const [result, setResult] = useState("");
-    
-    
+    const [liveAnswer, setLiveAnswer] = useState("0");
+    const { theme } = useContext(ThemeContext);
+
+    useEffect(() => {
+        document.body.className = theme;
+    }, [theme]);
+
+    const computeLive = (expr) => {
+        try {
+            const res = evaluate(expr);
+            if (Number.isFinite(res)) setLiveAnswer("= " + res);
+        } catch {
+            // keep last valid answer — no blink
+        }
+    };
+
     const handleClick = (value) => {
-        setResult((prev) => prev + value);
+        const newResult = result + value;
+        setResult(newResult);
+        computeLive(newResult);
     };
 
     const allClear = () => {
-        setResult("")
-    }
+        setResult("");
+        setLiveAnswer("0");
+    };
 
     const removeOne = () => {
-        setResult((prev) => prev.slice(0,-1)) 
-    }
+        const newResult = result.slice(0, -1);
+        setResult(newResult);
+        if (!newResult) {
+            setLiveAnswer("0");
+        } else {
+            computeLive(newResult);
+        }
+    };
 
     const calculation = () => {
-        const isValidExpression = /^-?\d+(\.\d+)?([+\-*/%]-?\d+(\.\d+)?)*$/;
-        
-        if (isValidExpression.test(result)) {
-            try {
-                // Evaluate the valid expression
-                setResult((prev) => eval(prev).toString());
-            } catch (error) {
-                setResult("Error");
+        try {
+            const res = evaluate(result);
+            if (Number.isFinite(res)) {
+                setResult(res.toString());
+                setLiveAnswer("= " + res);
             }
-        } else {
-            setResult("Error"); // Handle invalid expressions
+        } catch {
+            setLiveAnswer("Error");
         }
-    }
+    };
 
-        
-
-     
-    
-
-    return(
+    return (
         <div className="main-container">
-            <Header/>
-
-            <div className="standard-container" >
-
+            <Header />
+            <div className="standard-container">
                 <div className="display">
-                    
-                    <input type="text" id="result" disabled value={result}  />
+                    <div className="display-expression">{result || "0"}</div>
+                    <div className="display-result">{liveAnswer}</div>
                 </div>
-
                 <div className="buttons">
-
-                    <button onClick={() =>allClear()}>AC</button>
-                    <button onClick={() =>removeOne()}>DEL</button>
+                    <button onClick={allClear}>AC</button>
+                    <button onClick={removeOne}>DEL</button>
                     <button onClick={() => handleClick('%')}>%</button>
                     <button onClick={() => handleClick('/')}>/</button>
 
-                    <button className="num" onClick={() => handleClick('7')} >7</button>
-                    <button className="num" onClick={() => handleClick('8')} >8</button>
-                    <button className="num" onClick={() => handleClick('9')}>9</button>
+                    {['7','8','9'].map(n => (
+                        <button key={n} className="num" onClick={() => handleClick(n)}>{n}</button>
+                    ))}
                     <button onClick={() => handleClick('*')}>*</button>
 
-                    <button className="num" onClick={() => handleClick('4')}>4</button>
-                    <button className="num" onClick={() => handleClick('5')}>5</button>
-                    <button className="num" onClick={() => handleClick('6')}>6</button>
+                    {['4','5','6'].map(n => (
+                        <button key={n} className="num" onClick={() => handleClick(n)}>{n}</button>
+                    ))}
                     <button onClick={() => handleClick('-')}>-</button>
 
-                    <button className="num" onClick={() => handleClick('1')}>1</button>
-                    <button className="num" onClick={() => handleClick('2')}>2</button>
-                    <button className="num" onClick={() => handleClick('3')}>3</button>
+                    {['1','2','3'].map(n => (
+                        <button key={n} className="num" onClick={() => handleClick(n)}>{n}</button>
+                    ))}
                     <button onClick={() => handleClick('+')}>+</button>
 
                     <button className="num" onClick={() => handleClick('00')}>00</button>
                     <button className="num" onClick={() => handleClick('0')}>0</button>
                     <button className="num" onClick={() => handleClick('.')}>.</button>
-                    <button className="equal" onClick={() =>calculation()} >=</button>
-
+                    <button className="equal" onClick={calculation}>=</button>
                 </div>
-
             </div>
-            
         </div>
-    )
-}; export default Standard
+    );
+};
+
+export default Standard;
